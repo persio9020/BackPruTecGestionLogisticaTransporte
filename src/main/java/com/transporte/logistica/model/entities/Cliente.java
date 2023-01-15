@@ -64,12 +64,4 @@ public class Cliente implements Serializable {
   public Cliente(Long id) {
     this.id = id;
   }
-
-  public Sexo getSexoId() {
-    return sexoId;
-  }
-
-  public void setSexoId(Sexo sexoId) {
-    this.sexoId = sexoId;
-  }
 }
