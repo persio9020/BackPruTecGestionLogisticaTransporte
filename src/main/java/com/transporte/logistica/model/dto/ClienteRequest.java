@@ -2,8 +2,6 @@ package com.transporte.logistica.model.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Date;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
@@ -11,24 +9,24 @@ import lombok.Setter;
  */
 @Data
 public class ClienteRequest {
-  @Schema(example = "45", description = "Nombre completo del cliente")
+  @Schema(example = "Jose", maxLength = 45, description = "Nombre completo del cliente")
   private String nombres;
-  @Schema(example = "45", description = "Apellidos del cliente")
+  @Schema(example = "Cruz", maxLength = 45, description = "Apellidos del cliente")
   private String apellidos;
-  @Schema(example = "12", description = "Numero de identificación del cliente")
+  @Schema(example = "1212151", maxLength = 12, description = "Numero de identificación del cliente")
   private String identificacion;
-  @Schema(example = "2", description = "Id sexo cliente")
+  @Schema(example = "2", maxLength = 2, description = "Id sexo cliente")
   private Short sexoId;
-  @Schema(example = "15", description = "Número de telefono del cliente")
+  @Schema(example = "3545415158", maxLength = 15, description = "Número de telefono del cliente")
   private String telefono;
-  @Schema(example = "15", description = "Número de celular del cliente")
+  @Schema(example = "3545415158", maxLength = 15, description = "Número de celular del cliente")
   private String celular;
-  @Schema(example = "255", description = "Direccion de residencia del cliente")
+  @Schema(example = "3102958225", maxLength = 255, description = "Direccion de residencia del cliente")
   private String direccion;
-  @Schema(example = "60", description = "Correo electrónico del cliente")
+  @Schema(example = "mail@gmail.com", maxLength = 60, description = "Correo electrónico del cliente")
   private String correo;
-  @Schema(example = "50", description = "Fecha de nacimiento de cliente")
+  @Schema(example = "2023-01-15T10:28:39.816Z", maxLength = 50, description = "Fecha de nacimiento de cliente")
   private Date fechaNacimiento;
-  @Schema(example = "2", description = "id tipo de identificación de cliente")
+  @Schema(example = "2", maxLength = 2, description = "id tipo de identificación de cliente")
   private Short idTipoIdentificacion;
 }
