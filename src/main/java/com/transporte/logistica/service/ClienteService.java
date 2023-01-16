@@ -1,7 +1,9 @@
 package com.transporte.logistica.service;
 
 import com.transporte.logistica.model.dto.ClienteRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
+import com.transporte.logistica.model.dto.ClienteResponse;
+import java.util.List;
+import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
 
 /**
@@ -10,11 +12,11 @@ import reactor.core.publisher.Mono;
  */
 public interface ClienteService {
 
-  public Mono<ServerResponse> agregarCliente(Mono<ClienteRequest> clienteRequest);
+  public Mono<ResponseEntity<String>> agregarCliente(Mono<ClienteRequest> clienteRequest);
   
-  public Mono<ClienteRequest> validarCliente(ClienteRequest productoRequest);
+  public Mono<ClienteRequest> validarCliente(ClienteRequest clienteRequest);
   
-  public Mono<ServerResponse> guardarCliente(ClienteRequest productoRequest);
+  public Mono<ResponseEntity<String>> guardarCliente(ClienteRequest clienteRequest);
   
-  public Mono<ServerResponse> listarTodos();
+  public Mono<ResponseEntity<List<ClienteResponse>>> listarTodos();
 }

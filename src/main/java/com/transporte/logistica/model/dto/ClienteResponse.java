@@ -2,6 +2,7 @@ package com.transporte.logistica.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Date;
+import javax.persistence.Id;
 import lombok.Data;
 
 /**
@@ -10,6 +11,7 @@ import lombok.Data;
  */
 @Data
 public class ClienteResponse {
+  @Id
   private Long id;
   @Schema(description = "Nombre completo del cliente")
   private String nombres;

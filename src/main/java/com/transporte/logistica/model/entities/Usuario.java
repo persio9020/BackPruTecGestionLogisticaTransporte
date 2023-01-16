@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,7 +43,7 @@ public class Usuario implements Serializable {
   @Basic(optional = false)
   @Column(name = "correo")
   private String correo;
-  @ManyToMany(mappedBy = "usuarioList")
+  @ManyToMany(fetch = FetchType.EAGER, mappedBy = "usuarioList")
   private List<Rol> rolList;
 
   public Usuario() {
@@ -123,5 +124,5 @@ public class Usuario implements Serializable {
   public String toString() {
     return "com.transporte.logistica.model.entities.Usuario[ id=" + id + " ]";
   }
-  
+
 }
