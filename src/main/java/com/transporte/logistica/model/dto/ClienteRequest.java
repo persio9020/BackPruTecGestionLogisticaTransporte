@@ -16,7 +16,7 @@ public class ClienteRequest {
   @Schema(example = "1212151", maxLength = 12, description = "Numero de identificación del cliente")
   private String identificacion;
   @Schema(example = "2", maxLength = 2, description = "Id sexo cliente")
-  private Short sexoId;
+  private Short idSexo;
   @Schema(example = "3545415158", maxLength = 15, description = "Número de telefono del cliente")
   private String telefono;
   @Schema(example = "3545415158", maxLength = 15, description = "Número de celular del cliente")
