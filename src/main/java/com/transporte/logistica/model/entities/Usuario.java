@@ -7,15 +7,16 @@ package com.transporte.logistica.model.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import lombok.Data;
 
 /**
  *
@@ -23,8 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuario")
-@NamedQueries({
-  @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")})
+@Data
 public class Usuario implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -42,7 +42,8 @@ public class Usuario implements Serializable {
   @Basic(optional = false)
   @Column(name = "correo")
   private String correo;
-  @ManyToMany(mappedBy = "usuarioList")
+  @ManyToMany(fetch = FetchType.EAGER,
+   mappedBy = "usuarioList")
   private List<Rol> rolList;
 
   public Usuario() {
@@ -59,69 +60,4 @@ public class Usuario implements Serializable {
     this.correo = correo;
   }
 
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
-
-  public String getContrasenia() {
-    return contrasenia;
-  }
-
-  public void setContrasenia(String contrasenia) {
-    this.contrasenia = contrasenia;
-  }
-
-  public String getCorreo() {
-    return correo;
-  }
-
-  public void setCorreo(String correo) {
-    this.correo = correo;
-  }
-
-  public List<Rol> getRolList() {
-    return rolList;
-  }
-
-  public void setRolList(List<Rol> rolList) {
-    this.rolList = rolList;
-  }
-
-  @Override
-  public int hashCode() {
-    int hash = 0;
-    hash += (id != null ? id.hashCode() : 0);
-    return hash;
-  }
-
-  @Override
-  public boolean equals(Object object) {
-    // TODO: Warning - this method won't work in the case the id fields are not set
-    if (!(object instanceof Usuario)) {
-      return false;
-    }
-    Usuario other = (Usuario) object;
-    if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-      return false;
-    }
-    return true;
-  }
-
-  @Override
-  public String toString() {
-    return "com.transporte.logistica.model.entities.Usuario[ id=" + id + " ]";
-  }
-  
 }

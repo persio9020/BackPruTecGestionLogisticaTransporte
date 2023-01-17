@@ -7,6 +7,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,18 +59,19 @@ public class Cliente implements Serializable {
   private TipoIdentificacion tipoIdentificacionId;
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteId")
   private List<PlanEntrega> planEntregaList;
-  
+
   public Cliente() {
   }
+
   public Cliente(Long id) {
     this.id = id;
   }
 
-  public Sexo getSexoId() {
-    return sexoId;
+  public String getNombreCompleto() {
+    return nombres + " " + apellidos;
   }
 
-  public void setSexoId(Sexo sexoId) {
-    this.sexoId = sexoId;
+  public String getLabel() {
+    return nombres + " " + apellidos + " - " + identificacion;
   }
 }
