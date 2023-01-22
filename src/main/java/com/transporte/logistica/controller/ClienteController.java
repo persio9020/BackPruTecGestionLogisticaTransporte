@@ -20,25 +20,25 @@ import reactor.core.publisher.Mono;
  * @author Hector Leon
  */
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("${sistema.context-path.api}/cliente")
 public class ClienteController {
 
   @Autowired
   private ClienteService clienteService;
-  
+
   @PostMapping("/agregar")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<String>> agregarCliente(@RequestBody ClienteRequest request) {
     Mono<ClienteRequest> cliente = Mono.just(request);
     return clienteService.agregarCliente(cliente);
   }
-  
+
   @GetMapping("/listar")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<List<ClienteResponse>>> listar() {
     return clienteService.listarTodos();
   }
-  
+
   @GetMapping("/listar-options")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<List<OptionResponse>>> listarOptions() {
