@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author persi
  */
 @RestController
-@RequestMapping("/registrese")
+@RequestMapping("${sistema.context-path.api}/registrese")
 public class RegistreseController {
 
   @Autowired
