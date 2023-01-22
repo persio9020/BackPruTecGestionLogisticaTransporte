@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 import com.transporte.logistica.config.PBKDF2Encoder;
 import com.transporte.logistica.service.UsuarioService;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /**
@@ -20,6 +21,7 @@ import com.transporte.logistica.service.UsuarioService;
  */
 @AllArgsConstructor
 @RestController
+@RequestMapping("${sistema.context-path.api}")
 public class AutenticacionController  {
 
     private JWTUtil jwtUtil;

@@ -22,7 +22,7 @@ import reactor.core.publisher.Mono;
  * @author Hector Leon
  */
 @RestController
-@RequestMapping("/tipo-producto")
+@RequestMapping("${sistema.context-path.api}/tipo-producto")
 public class TipoProductoController {
 
   @Autowired

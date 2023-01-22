@@ -20,24 +20,25 @@ import reactor.core.publisher.Mono;
  * @author Hector Leon
  */
 @RestController
-@RequestMapping("/puerto")
+@RequestMapping("${sistema.context-path.api}/puerto")
 public class PuertoController {
+
   @Autowired
   private PuertoService puertoService;
-  
+
   @PostMapping("/agregar")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<String>> agregar(@RequestBody PuertoRequest request) {
     Mono<PuertoRequest> puerto = Mono.just(request);
     return puertoService.agregarPuerto(puerto);
   }
-  
+
   @GetMapping("/listar")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<List<PuertoResponse>>> listar() {
     return puertoService.listarTodos();
   }
-  
+
   @GetMapping("/listar-options")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<List<OptionResponse>>> listarOptions() {

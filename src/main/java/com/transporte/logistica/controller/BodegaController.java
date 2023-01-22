@@ -20,23 +20,25 @@ import reactor.core.publisher.Mono;
  * @author Hector Leon
  */
 @RestController
-@RequestMapping("/bodega")
+@RequestMapping("${sistema.context-path.api}/bodega")
 public class BodegaController {
+
   @Autowired
   private BodegaService bodegaService;
+
   @PostMapping("/agregar")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<String>> agregarBodega(@RequestBody BodegaRequest request) {
     Mono<BodegaRequest> bodega = Mono.just(request);
     return bodegaService.agregarBodega(bodega);
   }
-  
+
   @GetMapping("/listar")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<List<BodegaResponse>>> listar() {
     return bodegaService.listarTodos();
   }
-  
+
   @GetMapping("/listar-options")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<List<OptionResponse>>> listarOptions() {

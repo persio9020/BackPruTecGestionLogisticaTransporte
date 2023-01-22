@@ -1,10 +1,7 @@
 package com.transporte.logistica.controller;
 
-import com.transporte.logistica.model.dto.ClienteRequest;
-import com.transporte.logistica.model.dto.ClienteResponse;
 import com.transporte.logistica.model.dto.PlanEntregaTerrestreRequest;
 import com.transporte.logistica.model.dto.PlanEntregaTerrestreResponse;
-import com.transporte.logistica.service.ClienteService;
 import com.transporte.logistica.service.PlanEntregaTerrestreService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +19,19 @@ import reactor.core.publisher.Mono;
  * @author persi
  */
 @RestController
-@RequestMapping("/plan-entrega-terrestre")
+@RequestMapping("${sistema.context-path.api}/plan-entrega-terrestre")
 public class PlanEntregaTerrestreController {
-    @Autowired
+
+  @Autowired
   private PlanEntregaTerrestreService planEntregaTerrestreService;
-  
+
   @PostMapping("/agregar")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<String>> agregar(@RequestBody PlanEntregaTerrestreRequest request) {
     Mono<PlanEntregaTerrestreRequest> planEntrega = Mono.just(request);
     return planEntregaTerrestreService.agregarPlanEntrega(planEntrega);
   }
-  
+
   @GetMapping("/listar")
   @PreAuthorize("hasRole('USER')")
   public Mono<ResponseEntity<List<PlanEntregaTerrestreResponse>>> listar() {
